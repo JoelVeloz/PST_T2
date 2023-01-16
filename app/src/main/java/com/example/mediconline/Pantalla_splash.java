@@ -3,27 +3,26 @@ package com.example.mediconline;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Pantalla_splash extends Activity {
+public class Pantalla_splash extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_splash);
 
-        TimerTask tarea = new TimerTask() {
+        new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(Pantalla_splash.this,MainActivity.class);
-                startActivity(intent);
+                Intent intento = new Intent(Pantalla_splash.this, MainActivity.class);
+                startActivity(intento);
                 finish();
             }
-        };
-        Timer tiempo = new Timer();
-        tiempo.schedule(tarea, 3000);
-        //El tiempo está dado en milisegundos. Por lo tanto para 3 segundos = 3000 milisegundos
+        }, 3000);
     }
 }
